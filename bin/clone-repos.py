@@ -5,7 +5,6 @@ import pprint
 import os
 import os.path
 import json
-import urllib2
 import logging
 import subprocess
 import types
@@ -66,7 +65,7 @@ class gethub:
 
             try:
                 rsp = requests.get(url, auth=(self.token, ''), stream=True)
-            except Exception, e:
+            except Exception as e:
                 logging.error("Failed to retrieve %s, because %s" % (url, e))
                 return False
                 
@@ -98,7 +97,7 @@ class gethub:
 
             try:
                 data = rsp.json()
-            except Exception, e:
+            except Exception as e:
                 logging.error("Failed to parse %s, because %s" % (url, e))
                 return False
         
@@ -114,13 +113,13 @@ class gethub:
 
                 try:
                     self.clone_repo(repo, outdir)
-                except Exception, e:
+                except Exception as e:
                     logging.error(e)
                     
 if __name__ == '__main__':
 
     import optparse
-    import ConfigParser
+    import configparser
 
     parser = optparse.OptionParser()
 
@@ -151,7 +150,7 @@ if __name__ == '__main__':
             logging.error("%s does not exist" % opts.config)
             sys.exit()
 
-        cfg = ConfigParser.ConfigParser()
+        cfg = configparser.ConfigParser()
         cfg.read(opts.config)
         token = cfg.get('github', 'token')
 

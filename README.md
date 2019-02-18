@@ -6,17 +6,17 @@ A simple script to clone a user's or an organization's public and private reposi
 
 ### Cloning your own repositories
 
-	$> clone-repos.py --token <personal-api-token> --outdir </path/to/github-clone> [ list of repos to skip ]
+	$> python ./bin/clone-repos.py --token <personal-api-token> --outdir </path/to/github-clone> [ list of repos to skip ]
 
 ### Cloning an origanization's repositories
 
-	$> clone-repos.py --token <personal-api-token> --organization <org> --outdir </path/to/github-clone> [ list of repos to skip ]
+	$> python ./bin/clone-repos.py --token <personal-api-token> --organization <org> --outdir </path/to/github-clone> [ list of repos to skip ]
 
 ### Using a config file
 
 You can also use a standard .ini file for specifying your personal API token
 
-	$> clone-repos.py --config </path/to/config> --outdir </path/to/github-clone> [ list of repos to skip ]
+	$> python ./bin/clone-repos.py --config </path/to/config> --outdir </path/to/github-clone> [ list of repos to skip ]
 
 The config file should contain a `github.token` entry, for example:
 
@@ -26,3 +26,15 @@ The config file should contain a `github.token` entry, for example:
 ### See also
 
 * https://github.com/blog/1509-personal-api-tokens
+
+### Using Python 3
+
+You can use this with Python 3 and [pipenv](https://pipenv.readthedocs.io/en/latest/). Just type the following:
+
+```
+$ brew install pipenv (on a Mac)
+$ pipenv install
+$ pipenv shell
+```
+
+This should install packages and set you up in a shell using Python 3.
